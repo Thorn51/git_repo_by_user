@@ -7,5 +7,27 @@
     <link rel="stylesheet" href="styles.css" />
     <title>GitHub Repositories</title>
   </head>
-  <body></body>
+  <body>
+    <h1 class="page-title">Search for GitHub Repos by User Handle</h1>
+    <form action="get" class="search-form">
+      <label for="search-input" class="search-input-label"
+        >Please enter the candidates GitHub handle to display their GitHub
+        repositories</label
+      >
+      <input
+        type="text"
+        id="search-handle-input"
+        name="search-input"
+        required
+      />
+      <input type="button" value="Search" />
+    </form>
+    <div class="display-area"></div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
 </html>
