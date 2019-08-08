@@ -41,18 +41,21 @@ function fetchUserRepos(search) {
 // Manipulate DOM to display results
 function displayReposInDom(responseJson) {
   // $('.repo-list')
+  let totalRepos = responseJson.length;
   $(".error-message").hide();
   $(".repo-list-ul").empty();
   console.log(responseJson);
   $(".repo-list-ul").append(
-    `<h3>GitHub Repositories by <a href="${responseJson[0].owner.html_url}"}>${
-      responseJson[0].owner.login
-    }</a></h3>`
+    `<h3 class="list-header">${totalRepos} GitHub Repositories by <a href="${
+      responseJson[0].owner.html_url
+    }"}>${responseJson[0].owner.login}</a></h3>`
   );
   for (let i = 0; i < responseJson.length; i++) {
     $(".repo-list-ul").append(
-      `<li><a href="${responseJson[i].html_url}">${
+      `<li><span class="repo-name">${
         responseJson[i].name
+      }</span> --- <a href="${responseJson[i].html_url}"> ${
+        responseJson[i].html_url
       }</a></li>`
     );
   }
