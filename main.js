@@ -23,6 +23,9 @@ function fetchUserRepos(search) {
   console.log(fetchUrl);
   fetch(fetchUrl)
     .then(function(response) {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
       return response.json();
     })
     .then(function(responseJson) {
@@ -30,13 +33,16 @@ function fetchUserRepos(search) {
     })
     .catch(function(error) {
       console.log(error);
+      $(".error-message").show();
+      $(".repo-list-ul").empty();
     });
 }
 
 // Manipulate DOM to display results
 function displayReposInDom(responseJson) {
   // $('.repo-list')
-  let repoListHtml = "";
+  $(".error-message").hide();
+  $(".repo-list-ul").empty();
   console.log(responseJson);
   $(".repo-list-ul").append(
     `<h3>GitHub Repositories by <a href="${responseJson[0].owner.html_url}"}>${
